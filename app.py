@@ -2418,7 +2418,8 @@ class ClinicalAnalysisApp:
     # Main launcher
     def launch_app():
         print("🏥 Clinical Data Analysis Platform - Plan Confirmation Feature")
-        print("🚀 Launching application on http://127.0.0.1:7860")
+        port = int(os.getenv("PORT", 7860))
+        print(f"🚀 Launching application on http://127.0.0.1:{port}")
         print("   Press Ctrl+C to stop the server")
         print()
         
@@ -2426,8 +2427,8 @@ class ClinicalAnalysisApp:
         app_instance = ClinicalAnalysisApp()
         interface = app_instance.create_interface()
         interface.launch(
-            server_name="127.0.0.1",
-            server_port=7860,
+            server_name="0.0.0.0",
+            server_port=port,
             share=False,
             debug=True,
             show_error=True
